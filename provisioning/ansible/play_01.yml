@@ -7,7 +7,12 @@
     - name: 'Say Hello'
       shell: 'echo Hello and die!'
       register: my_shell_cmd
+      tags:
+        - one
 
     - name: 'Show output of shell command'
       debug:
         msg: '{{ my_shell_cmd.stdout_lines }}'
+      tags:
+        - one
+        - two
