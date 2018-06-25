@@ -1,0 +1,5 @@
+---
+- name: 'Install chrony'
+  package:
+    name: 'chrony'
+    state: 'latest'

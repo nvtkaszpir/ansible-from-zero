@@ -1,0 +1,6 @@
+---
+
+- name: 'Manage chrony service'
+  service:
+    name: '{{ chrony_service_name }}'
+    state: 'started'

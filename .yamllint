@@ -1,0 +1,17 @@
+---
+
+extends: default
+
+ignore: |
+  .git/
+  .sublime/
+  .vagrant/
+
+rules:
+  line-length:
+    ignore: |
+      group_vars/
+    max: 120
+    level: warning
+    allow-non-breakable-words: true
+    allow-non-breakable-inline-mappings: true

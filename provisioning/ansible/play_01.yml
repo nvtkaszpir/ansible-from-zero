@@ -1,0 +1,13 @@
+---
+
+- name: 'Show simple message on all hosts'
+  hosts: all
+  become: true
+  tasks:
+    - name: 'Say Hello'
+      shell: 'echo Hello and die!'
+      register: my_shell_cmd
+
+    - name: 'Show output of shell command'
+      debug:
+        msg: '{{ my_shell_cmd.stdout_lines }}'

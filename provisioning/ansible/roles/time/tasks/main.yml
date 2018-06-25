@@ -1,0 +1,22 @@
+---
+
+- name: 'Debug info about system'
+  debug:
+    var: '{{ item }}'
+  with_items:
+    - ansible_distribution
+    - ansible_distribution_major_version
+    - ansible_distribution
+    - ansible_os_family
+
+- name: 'Load OS specific variables'
+  include_vars: "{{ item }}"
+  with_first_found:
+    - '{{ ansible_distribution }}-{{ ansible_distribution_major_version}}.yml'
+    - '{{ ansible_distribution }}.yml'
+    - '{{ ansible_os_family }}.yml'
+
+- block:
+    - include_tasks: 'install.yml'
+    - include_tasks: 'service.yml'
+  when: chrony_service_name is defined

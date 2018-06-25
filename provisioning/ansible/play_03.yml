@@ -1,0 +1,16 @@
+---
+
+- name: 'Show simple message on all hosts'
+  hosts: all
+  become: true
+  tasks:
+    - name: 'Debug hello message'
+      debug:
+        msg: 'hello_message: {{ hello_message }}'
+
+    - name: 'Debug var hello_message'
+      debug:
+        var: hello_message
+
+    - name: 'Say Hello'
+      shell: 'echo {{ hello_message }}'

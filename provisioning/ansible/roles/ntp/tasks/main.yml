@@ -1,0 +1,10 @@
+---
+- name: 'Install ntp'
+  package:
+    name: 'ntp'
+    state: 'latest'
+
+- name: 'Manage ntp service'
+  service:
+    name: 'ntp'
+    state: 'started'

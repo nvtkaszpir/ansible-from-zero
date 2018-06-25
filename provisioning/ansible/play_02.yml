@@ -1,0 +1,9 @@
+---
+
+- name: 'Show simple message on all hosts'
+  hosts: all
+  become: true
+  tasks:
+    - name: 'Debug hello message'
+      debug:
+        msg: 'hello_message: {{ hello_message }}'

@@ -1,0 +1,8 @@
+---
+
+- name: 'Show simple message on all hosts'
+  hosts: all
+  become: true
+  tasks:
+    - name: 'Say Hello'
+      shell: 'echo Hello and die!'

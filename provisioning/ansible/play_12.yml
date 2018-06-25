@@ -1,0 +1,22 @@
+---
+
+- name: 'Manage all hosts'
+  hosts: all
+  become: true
+  tasks:
+    - name: 'Install Midnight Commander'
+      package:
+        name: 'mc'
+        state: 'present'
+
+- name: 'Manage group Alpha'
+  hosts: group_alpha
+  become: true
+  roles:
+    - ntp
+
+- name: 'Manage group Beta'
+  hosts: group_bravo
+  become: true
+  roles:
+    - chrony

@@ -1,0 +1,6 @@
+---
+
+- name: 'Manage chrony service'
+  service:
+    name: 'chronyd'
+    state: 'started'

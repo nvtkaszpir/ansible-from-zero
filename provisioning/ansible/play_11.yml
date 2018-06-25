@@ -1,0 +1,36 @@
+---
+
+- name: 'Manage all hosts'
+  hosts: all
+  become: true
+  tasks:
+    - name: 'Install Midnight Commander'
+      package:
+        name: 'mc'
+        state: 'latest'
+
+- name: 'Manage group Alpha'
+  hosts: group_alpha
+  become: true
+  tasks:
+    - name: 'Install ntp'
+      package:
+        name: 'ntp'
+        state: 'latest'
+    - name: 'Manage ntp service'
+      service:
+        name: 'ntp'
+        state: 'started'
+
+- name: 'Manage group Beta'
+  hosts: group_bravo
+  become: true
+  tasks:
+    - name: 'Install chrony'
+      package:
+        name: 'chrony'
+        state: 'latest'
+    - name: 'Manage chrony service'
+      service:
+        name: 'chronyd'
+        state: 'started'
