@@ -41,6 +41,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     s.vm.box = "generic/ubuntu1604"
   end
 
+  config.vm.provision "shell", path: "provisioning/shell/common.sh"
 
   config.vm.provision "ansible" do |ansible|
     # # notice, galaxy ins executed per each node.
