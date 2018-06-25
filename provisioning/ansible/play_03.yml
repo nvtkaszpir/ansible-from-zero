@@ -8,9 +8,34 @@
       debug:
         msg: 'hello_message: {{ hello_message }}'
 
+- name: 'Show simple message on all hosts, doing one host at a time'
+  hosts: all
+  become: true
+  serial: 1
+  tasks:
+
     - name: 'Debug var hello_message'
       debug:
         var: hello_message
+
+    - name: 'Sleeping random time'
+      shell: 'sleep $(shuf -i 10-30 -n 1)'
+
+    - name: 'Say Hello'
+      shell: 'echo {{ hello_message }}'
+
+- name: 'Show simple message on all hosts without wait'
+  hosts: all
+  become: true
+  strategy: free
+  tasks:
+
+    - name: 'Debug var hello_message'
+      debug:
+        var: hello_message
+
+    - name: 'Sleeping random time'
+      shell: 'sleep $(shuf -i 10-30 -n 1)'
 
     - name: 'Say Hello'
       shell: 'echo {{ hello_message }}'
