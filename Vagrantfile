@@ -12,6 +12,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 
   # providers
+  config.vm.provider "virtualbox" do |v|
+    v.cpus = V_CPU
+    v.memory = V_MEM_TOTAL
+  end
 
   config.vm.provider :libvirt do |libvirt, override|
     # this is vagrant, vm is disposable, so set up supper agressive disk access

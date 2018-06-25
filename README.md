@@ -1,12 +1,27 @@
-# Deploy ETCD standalone cluster
+# Ansible form zero
+
+Repo to help people get to know Ansible from complete zero.
+
+# Known limitations
+
+- tested under Ubuntu 16.04 with libvirt, should work with virtualbox.
 
 # Requirements
+- vagrant https://www.vagrantup.com/downloads.html
+- apt packages on control machine:
+```bash
+sudo apt-get update
+sudo apt-get install -y python-pip python-virtualenv python-dev
 
-At least Ansible 2.5 on control-machine.
+```
+
+# Before doing any command:
+Execute below on control-machine
 
 ```bash
-pyenv virtualenv packer-etcd
-pyenv activate packer-etcd
+virtualenv .venv
+source .venv/bin/activate
+
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
