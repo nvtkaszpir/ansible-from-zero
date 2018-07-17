@@ -30,32 +30,29 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # virtual machines
+  config.ssh.insert_key = false
+
+  # control node
+  config.vm.define "ubuntu-1" do |s|
+    s.vm.box = "generic/ubuntu1604"
+    s.vm.network "private_network", ip: "192.168.50.10"
+    s.vm.provision "shell", path: "provisioning/shell/ansible-ubuntu.sh"
+
+  end
 
   config.vm.define "centos-1" do |s|
     s.vm.box = "centos/7"
+    s.vm.network "private_network", ip: "192.168.50.21"
   end
   config.vm.define "debian-1" do |s|
     s.vm.box = "generic/debian9"
+    s.vm.network "private_network", ip: "192.168.50.31"
   end
-  config.vm.define "ubuntu-1" do |s|
+  config.vm.define "ubuntu-11" do |s|
     s.vm.box = "generic/ubuntu1604"
+    s.vm.network "private_network", ip: "192.168.50.11"
   end
 
   config.vm.provision "shell", path: "provisioning/shell/common.sh"
-
-  config.vm.provision "ansible" do |ansible|
-    # # notice, galaxy ins executed per each node.
-    # ansible.galaxy_role_file = 'provisioning/ansible/requirements.yml'
-    # ansible.galaxy_roles_path = 'provisioning/ansible/.galaxy'
-
-    ansible.compatibility_mode = "2.0"
-    ansible.playbook = "provisioning/ansible/play_00.yml"
-    ansible.groups = {
-      "group_alpha" => [ "ubuntu-1" ],
-      "group_bravo" => [ "centos-1" ],
-      "group_charlie" => [ "debian-1", "ubuntu-1" ],
-    }
-    ansible.verbose = 'v'
-  end
 
 end

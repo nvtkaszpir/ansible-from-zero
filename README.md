@@ -11,18 +11,33 @@ Repo to help people get to know Ansible from complete zero.
 - virtual machine provider - choose one of (if unsure, choose virtualbox):
   - virtualbox https://www.virtualbox.org/wiki/Downloads
   - libvirt https://github.com/vagrant-libvirt/vagrant-libvirt
-- apt packages on control machine:
-```bash
-sudo apt-get update
-sudo apt-get install -y python-pip python-virtualenv python-dev
 
+# Starting the setup
+
+Just run
+
+```bash
+vagrant up
+```
+... and wait till it downloads system images and runs provision
+Should take about 10 minutes in total - about 3 min to download images and 3 minutes to provision guests in sequence.
+
+# Logging in to control-machine
+
+After vagrant up you can SSH to the control-machine:
+
+```bash
+vagrant ssh ubuntu-1
 ```
 
-# Before doing any command:
+After log in you should see `ansible-from-zero` directory.
+
+# Before doing any command on control node:
 Execute below on control-machine, to be sure there is properly activated virtualenv
 environment and there are installed specific versions of the required packages.
 
 ```bash
+cd /home/vagrant/ansible-from-zero
 virtualenv .venv
 source .venv/bin/activate
 

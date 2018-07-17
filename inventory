@@ -1,0 +1,13 @@
+centos-1 ansible_host=192.168.50.21 ansible_port=22 ansible_user='vagrant'
+debian-1 ansible_host=192.168.50.31 ansible_port=22 ansible_user='vagrant'
+ubuntu-1 ansible_host=192.168.50.11 ansible_port=22 ansible_user='vagrant'
+
+[group_alpha]
+ubuntu-1
+
+[group_bravo]
+centos-1
+
+[group_charlie]
+debian-1
+ubuntu-1
