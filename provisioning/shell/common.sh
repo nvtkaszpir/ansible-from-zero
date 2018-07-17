@@ -10,10 +10,11 @@ set -e
 if [ $result -eq 0 ]; then
 	export DEBIAN_FRONTEND=noninteractive
 
-	apt-get update
+	apt-get update > /dev/null
 	apt-get install -y \
 		python \
-		rsync
+		rsync \
+		> /dev/null
 fi
 
 set +e
@@ -23,6 +24,7 @@ set -e
 if [ $result -eq 0 ]; then
 	yum install -y \
 		python2 \
-		rsync
+		rsync \
+		> /dev/null
 
 fi

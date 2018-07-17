@@ -19,7 +19,7 @@
         var: hello_message
 
     - name: 'Sleeping random time'
-      shell: 'sleep $(shuf -i 10-30 -n 1)'
+      shell: 'sleep $(shuf -i 10-15 -n 1)'
 
     - name: 'Say Hello'
       shell: 'echo {{ hello_message }}'
@@ -34,8 +34,20 @@
       debug:
         var: hello_message
 
-    - name: 'Sleeping random time'
-      shell: 'sleep $(shuf -i 10-30 -n 1)'
+    - name: 'Sleeping random time 1'
+      shell: 'sleep $(shuf -i 1-5 -n 1)'
+
+    - name: 'Sleeping random time 2'
+      shell: 'sleep $(shuf -i 1-5 -n 1)'
+
+    - name: 'Sleeping random time 3 '
+      shell: 'sleep $(shuf -i 1-5 -n 1)'
+
+    - name: 'Sleeping random time 4'
+      shell: 'sleep $(shuf -i 1-5 -n 1)'
+
+    - name: 'Sleeping random time 5'
+      shell: 'sleep $(shuf -i 1-5 -n 1)'
 
     - name: 'Say Hello'
       shell: 'echo {{ hello_message }}'

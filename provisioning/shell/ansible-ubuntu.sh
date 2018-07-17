@@ -2,11 +2,28 @@
 #
 export LANG=en_US.UTF-8
 
-# install ansible under ubuntu
-sudo apt-get install -y python python-simplejson python-virtualenv python-pip git python-dev mc vim nano
+# install ansible under Ubuntu
+sudo apt-get install -y \
+	git \
+	mc \
+	nano \
+	python \
+	python-dev \
+	python-pip \
+	python-simplejson \
+	python-virtualenv \
+	vim
 
-git clone https://github.com/nvtkaszpir/ansible-from-zero.git || true
-cd ansible-from-zero
+if [ ! -d /home/vagrant/ansible-from-zero ]; then
+	git clone https://github.com/nvtkaszpir/ansible-from-zero.git
+else
+	cd /home/vagrant/ansible-from-zero
+	git fetch --all
+	git reset --hard
+	git pull
+fi
+
+cd /home/vagrant/ansible-from-zero
 virtualenv .venv
 source .venv/bin/activate
 pip install --upgrade pip
@@ -20,6 +37,4 @@ chmod 600 /home/vagrant/.ssh/id_rsa
 # add ssk to known hosts
 ssh-keyscan -H 192.168.50.11 192.168.50.21 192.168.50.31 >> /home/vagrant/.ssh/known_hosts
 
-
 chown -R vagrant:vagrant /home/vagrant
-
