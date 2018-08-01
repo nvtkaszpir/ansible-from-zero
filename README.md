@@ -1,4 +1,4 @@
-# Ansible form zero
+# Ansible from zero
 
 Repo to help people get to know Ansible from complete zero.
 
@@ -76,7 +76,7 @@ ansible-playbook -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inve
 
 ## Notice missing/existing binaries per host
 ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory -m shell -a "which ntpd" all
-ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory -m shell -a "which crhonyc" all
+ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory -m shell -a "which chronyc" all
 
 ## will error on Debian
 ansible-playbook -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory provisioning/ansible/play_13.yml
@@ -86,7 +86,7 @@ ansible-playbook -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inve
 - ugly files
 - templates
 - handlers
-- conditinals based on registered vars,
+- conditionals based on registered vars,
 - facts
 
 
