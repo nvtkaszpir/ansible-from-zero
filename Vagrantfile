@@ -53,6 +53,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     s.vm.network "private_network", ip: "192.168.50.11"
   end
 
-  config.vm.provision "shell", path: "provisioning/shell/common.sh"
+  config.vm.provision "shell",
+    type: "shell",
+    path: "provisioning/shell/common.sh",
+    privileged: true
 
 end
